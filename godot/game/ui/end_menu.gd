@@ -15,6 +15,9 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func init(is_victory, stats):
+	$HBoxContainer/Label.text = "Congratulations" if is_victory else "Try again";
+	#$HBoxContainer/Label2.text = stats....;
 
 func _on_ButtonRestart_pressed():
 	get_tree().change_scene("res://game/main_scene.tscn")

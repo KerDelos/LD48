@@ -8,9 +8,11 @@ func _ready():
 func check_for_end():
 	if $netmap.is_final_node_acquired() :
 		var menu = end_menu.instance()
+		menu.init(true,null)
 		add_child(menu)
 	elif !$deck.can_player_continue():
 		var menu = end_menu.instance()
+		menu.init(false,null)
 		add_child(menu)
 	else:
 		pass

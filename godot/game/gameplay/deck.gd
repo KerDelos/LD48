@@ -21,6 +21,8 @@ func _ready():
 	reset_energy()
 	init_hand()
 	spray_hand()
+	$"../hud".init(energy)
+	
 
 func reset_energy():
 	energy = initial_energy;
@@ -84,11 +86,19 @@ func floppy_released(floppy):
 	floppy.unselect()
 	selected_flop = null
 	var netmap = $"../netmap"
-	if netmap.is_netn_hovered():
+	if netmap.is_netn_hovered() and can_play_flop(floppy.stats):
 		if netmap.apply_flop_on_hovered_netn(floppy.stats) :
+			consume(floppy)
 			discard(floppy)
 			draw()
 			get_parent().check_for_end()
+
+func consume(floppy):
+	energy = energy - floppy.stats.cost;
+	$"../hud".set_energy(energy)
+
+func can_play_flop(stats):
+	return energy >= stats.cost
 
 func can_player_continue():
 	return !hand.empty() and energy > 0
