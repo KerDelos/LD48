@@ -11,7 +11,7 @@ func init(stats_list):
 	for s in stats_list:
 		var visu = floppy_visual.instance()
 		visu.init(s)
-		$Panel/HBoxContainer.add_child(visu)
+		$Panel/VBoxContainer/HBoxContainer.add_child(visu)
 
 
 func _on_SkipButton_pressed():
