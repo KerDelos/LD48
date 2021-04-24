@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="LD48_Godot"
-run/main_scene="res://game/gameplay/net_map.tscn"
+run/main_scene="res://game/main_scene.tscn"
 config/icon="res://icon.png"
 
 [physics]

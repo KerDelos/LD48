@@ -1,4 +1,4 @@
-tool
+#tool
 
 extends Node2D
 
@@ -26,7 +26,7 @@ func _ready():
 		acquired_by_player()
 
 func _process(delta):
-	#update()
+	update()
 	pass
 	
 func _draw():
