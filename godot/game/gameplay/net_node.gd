@@ -18,6 +18,8 @@ var node_type_to_color = {
 export (Array, NodePath) var out_nodes;
 var in_nodes;
 
+
+export var is_final_node = false;
 export (netn_type) var node_type;
 
 export var is_player_controlled = false;

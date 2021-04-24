@@ -25,6 +25,7 @@ node_type = 2
 
 [node name="net_node4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 514.623, 217.032 )
+is_final_node = true
 node_type = 1
 
 [node name="net_node5" parent="." instance=ExtResource( 1 )]
