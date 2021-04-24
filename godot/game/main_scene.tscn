@@ -16,5 +16,5 @@ __meta__ = {
 position = Vector2( 108.497, 46.4313 )
 
 [node name="deck" parent="." instance=ExtResource( 1 )]
-position = Vector2( 455.249, 504.249 )
+position = Vector2( 422.286, 491.776 )
 deck = [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ]

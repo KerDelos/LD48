@@ -5,6 +5,7 @@ var floppy_scene = preload("floppy.tscn")
 export (Array, Resource)  var deck;
 
 var hand = []
+var selected_flop = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +34,13 @@ func spray_hand():
 		flop.position = lerp($Start.position,$End.position,float(i)/hand.size())
 		flop.rotation_degrees = lerp($Start.rotation_degrees,$End.rotation_degrees,float(i)/hand.size())
 		i = i+1
-		
+
+func _input(event):
+	if event is InputEventMouseButton \
+	and event.button_index == BUTTON_LEFT \
+	and !event.is_pressed():
+		floppy_released(selected_flop)
+
 func on_flop_hovered(floppy):
 	floppy.z_index = 2
 	pass
@@ -43,5 +50,13 @@ func on_flop_unhovered(floppy):
 	pass
 	
 func on_floppy_selected(floppy):
-	pass
+	selected_flop = floppy
+	floppy.select()
 
+func floppy_released(floppy):
+	floppy.unselect()
+	selected_flop = null
+	var netmap = $"../netmap"
+	var result = false;
+	if netmap.is_netn_hovered():
+		result = netmap.apply_flop_on_hovered_netn(floppy.stats)

@@ -2,6 +2,10 @@
 
 extends Node2D
 
+signal netn_hovered(netn)
+signal netn_unhovered(netn)
+
+
 enum netn_type {NONE, HOME, MISC, DATA}
 
 var node_type_to_color = {
@@ -42,15 +46,15 @@ func acquired_by_player():
 
 func _on_Area2D_mouse_entered():
 	modulate = node_type_to_color[node_type].lightened(1.0)
+	emit_signal("netn_hovered",self)
 
 
 func _on_Area2D_mouse_exited():
 	modulate = node_type_to_color[node_type]
+	emit_signal("netn_unhovered",self)
 
-
-func _on_Area2D_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton \
-	and event.button_index == BUTTON_LEFT \
-	and event.is_pressed() \
-	and is_player_accessible and not is_player_controlled:
+func receive_flop(flop_stat):
+	if is_player_accessible and not is_player_controlled:
 		acquired_by_player()
+		return true;
+	return false
