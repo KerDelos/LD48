@@ -46,8 +46,6 @@ func draw():
 		hand.append(flop)
 		flop.init(draw_pile.pop_back())
 		flop.connect("flop_selected",self,"on_floppy_selected")
-		flop.connect("flop_hovered",self,"on_flop_hovered")
-		flop.connect("flop_unhovered",self,"on_flop_unhovered")
 
 func discard(flop):
 	hand.remove(hand.find(flop))
@@ -67,14 +65,6 @@ func _input(event):
 	and event.button_index == BUTTON_LEFT \
 	and !event.is_pressed():
 		floppy_released(selected_flop)
-
-func on_flop_hovered(floppy):
-	floppy.z_index = 2
-	pass
-	
-func on_flop_unhovered(floppy):
-	floppy.z_index = 0
-	pass
 	
 func on_floppy_selected(floppy):
 	selected_flop = floppy

@@ -12,6 +12,7 @@ func _ready():
 			final_node = c
 		c.connect("netn_hovered", self, "on_netn_hovered")
 		c.connect("netn_unhovered", self, "on_netn_unhovered")
+		c.connect("open_shop",get_parent(),"open_shop")
 
 
 func on_netn_hovered(netn):

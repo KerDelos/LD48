@@ -4,6 +4,7 @@ extends Node2D
 
 signal netn_hovered(netn)
 signal netn_unhovered(netn)
+signal open_shop(shop_content)
 
 
 enum netn_type {NONE, HOME, MISC, DATA}
@@ -25,6 +26,8 @@ export (netn_type) var node_type;
 export var is_player_controlled = false;
 var is_player_accessible = false;
 
+export (Array, Resource) var shop_content;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Sprite.modulate = node_type_to_color[node_type];
@@ -45,6 +48,11 @@ func acquired_by_player():
 	for o in out_nodes:
 		var out_node = get_node(o);
 		out_node.is_player_accessible = true;
+	on_acquired_by_player();
+		
+func on_acquired_by_player():
+	if node_type == netn_type.DATA:
+		emit_signal("open_shop", shop_content)
 
 func _on_Area2D_mouse_entered():
 	modulate = node_type_to_color[node_type].lightened(1.0)
