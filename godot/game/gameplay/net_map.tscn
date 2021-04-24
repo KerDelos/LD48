@@ -3,7 +3,7 @@
 [ext_resource path="res://game/gameplay/net_node.tscn" type="PackedScene" id=1]
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( -1.68188, -5.04541 )
+position = Vector2( 131.66, 83.8491 )
 
 [node name="net_node" parent="." instance=ExtResource( 1 )]
 position = Vector2( 39.1924, 161.915 )
@@ -22,7 +22,7 @@ out_nodes = [ NodePath("../net_node5") ]
 node_type = 2
 
 [node name="net_node4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 515.812, 214.654 )
+position = Vector2( 514.623, 217.032 )
 node_type = 1
 
 [node name="net_node5" parent="." instance=ExtResource( 1 )]
