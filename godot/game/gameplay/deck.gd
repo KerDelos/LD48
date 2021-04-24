@@ -12,11 +12,18 @@ var selected_flop = null
 
 var initial_hand_size = 2
 
+var initial_energy = 4
+var energy;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	shuffle_deck_into_draw_pile()
+	reset_energy()
 	init_hand()
 	spray_hand()
+
+func reset_energy():
+	energy = initial_energy;
 	
 func shuffle_deck_into_draw_pile():
 	for card in deck:
@@ -72,6 +79,8 @@ func on_floppy_selected(floppy):
 	floppy.select()
 
 func floppy_released(floppy):
+	if floppy == null:
+		return
 	floppy.unselect()
 	selected_flop = null
 	var netmap = $"../netmap"
@@ -79,3 +88,8 @@ func floppy_released(floppy):
 		if netmap.apply_flop_on_hovered_netn(floppy.stats) :
 			discard(floppy)
 			draw()
+			get_parent().check_for_end()
+
+func can_player_continue():
+	return !hand.empty() and energy > 0
+	#todo actually we should check if there is enough energy to play one of the remaining card

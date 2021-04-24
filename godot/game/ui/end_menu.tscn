@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/ui/end_menu.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_right = 99.0
+margin_bottom = 14.0
+text = "Congratulations"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer"]
+margin_top = 18.0
+margin_right = 99.0
+margin_bottom = 22.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+margin_top = 26.0
+margin_right = 99.0
+margin_bottom = 40.0
+text = "Stats"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer"]
+margin_top = 44.0
+margin_right = 99.0
+margin_bottom = 48.0
+
+[node name="ButtonRestart" type="Button" parent="HBoxContainer"]
+margin_top = 52.0
+margin_right = 99.0
+margin_bottom = 72.0
+text = "Restart"
+
+[node name="ButtonReturn" type="Button" parent="HBoxContainer"]
+margin_top = 76.0
+margin_right = 99.0
+margin_bottom = 96.0
+text = "Main menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="HBoxContainer/ButtonRestart" to="." method="_on_ButtonRestart_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonReturn" to="." method="_on_ButtonReturn_pressed"]
