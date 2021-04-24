@@ -10,6 +10,7 @@ func _ready():
 	for c in get_children():
 		if c.is_final_node:
 			final_node = c
+		c.init_link_with_out_nodes()
 		c.connect("netn_hovered", self, "on_netn_hovered")
 		c.connect("netn_unhovered", self, "on_netn_unhovered")
 		c.connect("open_shop",get_parent(),"open_shop")

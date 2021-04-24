@@ -17,7 +17,8 @@ var node_type_to_color = {
 }
 
 export (Array, NodePath) var out_nodes;
-var in_nodes;
+var in_nodes = [];
+var connected_nodes = []
 
 
 export var is_final_node = false;
@@ -31,23 +32,30 @@ export (Array, Resource) var shop_content;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Sprite.modulate = node_type_to_color[node_type];
+	for o in out_nodes:
+		connected_nodes.append(get_node(o))
 	if is_player_controlled:
 		acquired_by_player()
+	
 
 func _process(delta):
 	update()
 	pass
 	
 func _draw():
-	for o in out_nodes:
-		draw_line(Vector2(0,0), get_node(o).position - self.position, Color.green if is_player_controlled else Color.red, 1)
+	for o in connected_nodes:
+		draw_line(Vector2(0,0), o.position - self.position, Color.green if is_player_controlled or o.is_player_controlled else Color.red, 1)
 
+func init_link_with_out_nodes():
+	for o in out_nodes:
+		var out_node = get_node(o);
+		out_node.in_nodes.append(self);
+		out_node.connected_nodes.append(self);
 
 func acquired_by_player():
 	is_player_controlled = true;
-	for o in out_nodes:
-		var out_node = get_node(o);
-		out_node.is_player_accessible = true;
+	for netn in connected_nodes:
+		netn.is_player_accessible = true;
 	on_acquired_by_player();
 		
 func on_acquired_by_player():
