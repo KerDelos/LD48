@@ -22,3 +22,7 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 14.0
 text = "Card title"
+
+[connection signal="gui_input" from="Panel" to="." method="_on_Panel_gui_input"]
+[connection signal="mouse_entered" from="Panel" to="." method="_on_Panel_mouse_entered"]
+[connection signal="mouse_exited" from="Panel" to="." method="_on_Panel_mouse_exited"]

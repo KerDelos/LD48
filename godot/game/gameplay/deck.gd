@@ -22,6 +22,9 @@ func init_hand():
 		add_child(flop)
 		hand.append(flop)
 		flop.init(card)
+		flop.connect("flop_selected",self,"on_floppy_selected")
+		flop.connect("flop_hovered",self,"on_flop_hovered")
+		flop.connect("flop_unhovered",self,"on_flop_unhovered")
 
 func spray_hand():
 	var i = 0
@@ -31,3 +34,14 @@ func spray_hand():
 		flop.rotation_degrees = lerp($Start.rotation_degrees,$End.rotation_degrees,float(i)/hand.size())
 		i = i+1
 		
+func on_flop_hovered(floppy):
+	floppy.z_index = 2
+	pass
+	
+func on_flop_unhovered(floppy):
+	floppy.z_index = 0
+	pass
+	
+func on_floppy_selected(floppy):
+	pass
+
