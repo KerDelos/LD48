@@ -32,3 +32,6 @@ func open_shop(content):
 func shop_closed():
 	shop_instance = null
 	check_for_end()
+
+func new_home(home):
+	$deck.new_home()

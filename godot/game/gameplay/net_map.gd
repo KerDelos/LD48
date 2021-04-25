@@ -14,6 +14,7 @@ func _ready():
 		c.connect("netn_hovered", self, "on_netn_hovered")
 		c.connect("netn_unhovered", self, "on_netn_unhovered")
 		c.connect("open_shop",get_parent(),"open_shop")
+		c.connect("new_home",get_parent(),"new_home")
 
 
 func on_netn_hovered(netn):
@@ -24,6 +25,9 @@ func on_netn_unhovered(netn):
 
 func is_netn_hovered():
 	return hovered_netn != null
+
+func can_apply_flop_on_hovered_netn(flop_stat):
+	return hovered_netn.can_receive_flop(flop_stat)
 
 func apply_flop_on_hovered_netn(flop_stat):
 	return hovered_netn.receive_flop(flop_stat)

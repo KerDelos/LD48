@@ -24,17 +24,18 @@ func _ready():
 	reset_energy()
 	init_hand()
 	spray_hand()
-	$"../hud".init(energy)
-	
 
 func reset_energy():
 	energy = initial_energy;
+	$"../hud".set_energy(energy)
 	
 func shuffle_deck_into_draw_pile():
 	for card in deck:
 		draw_pile.append(card)
 
 func clear_hand():
+	for flop in hand:
+		flop.queue_free()
 	hand.clear()
 
 func init_hand():
@@ -42,6 +43,14 @@ func init_hand():
 	for i in range(0,initial_hand_size):
 		draw()
 
+func new_home():
+	draw_pile.clear()
+	discard_pile.clear()
+	reset_energy()
+	shuffle_deck_into_draw_pile()
+	init_hand()
+	pass
+	
 func draw():
 	if !draw_pile.empty():
 		var flop = floppy_scene.instance()
@@ -49,6 +58,7 @@ func draw():
 		hand.append(flop)
 		flop.init(draw_pile.pop_back())
 		flop.connect("flop_selected",self,"on_floppy_selected")
+	spray_hand()
 
 func discard(flop, was_consumed):
 	hand.remove(hand.find(flop))
@@ -62,7 +72,6 @@ func spray_hand():
 	for flop in hand:
 		var pos = lerp($Start.position,$End.position,float(i)/hand.size())
 		flop.position = lerp($Start.position,$End.position,float(i)/hand.size())
-		flop.rotation_degrees = lerp($Start.rotation_degrees,$End.rotation_degrees,float(i)/hand.size())
 		i = i+1
 
 func _input(event):
@@ -82,8 +91,9 @@ func floppy_released(floppy):
 	selected_flop = null
 	var netmap = $"../netmap"
 	if netmap.is_netn_hovered() and can_play_flop(floppy.stats):
-		if netmap.apply_flop_on_hovered_netn(floppy.stats) :
+		if netmap.can_apply_flop_on_hovered_netn(floppy.stats) :
 			consume(floppy)
+			netmap.apply_flop_on_hovered_netn(floppy.stats)
 			get_parent().check_for_end()
 	elif discard_hovered:
 		discard(floppy,false)

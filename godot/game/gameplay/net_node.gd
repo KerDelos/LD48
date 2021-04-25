@@ -5,6 +5,7 @@ extends Node2D
 signal netn_hovered(netn)
 signal netn_unhovered(netn)
 signal open_shop(shop_content)
+signal new_home(home)
 
 
 enum netn_type {NONE, HOME, MISC, DATA}
@@ -65,6 +66,8 @@ func acquired_by_player():
 func on_acquired_by_player():
 	if node_type == netn_type.DATA:
 		emit_signal("open_shop", shop_content)
+	elif node_type == netn_type.HOME:
+		emit_signal("new_home", self)
 
 func _on_Area2D_mouse_entered():
 	modulate = node_type_to_color[node_type].lightened(1.0)
@@ -78,5 +81,10 @@ func _on_Area2D_mouse_exited():
 func receive_flop(flop_stat):
 	if is_player_accessible and not is_player_controlled:
 		acquired_by_player()
+		return true;
+	return false
+	
+func can_receive_flop(flop_stat):
+	if is_player_accessible and not is_player_controlled:
 		return true;
 	return false
