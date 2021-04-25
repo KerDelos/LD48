@@ -7,9 +7,13 @@ var final_node = null
 
 
 func _ready():
+	var p_start = null
 	for c in get_children():
 		if c.is_final_node:
 			final_node = c
+		if c.player_start:
+			p_start = c
+		c.init()
 		c.init_link_with_out_nodes()
 		c.connect("netn_hovered", self, "on_netn_hovered")
 		c.connect("netn_unhovered", self, "on_netn_unhovered")
@@ -17,6 +21,7 @@ func _ready():
 		c.connect("new_home",get_parent(),"new_home")
 		c.connect("energy_bonus",get_parent(),"energy_bonus")
 		c.connect("bin", get_parent(), "bin")
+	p_start.acquired_by_player()
 
 
 func on_netn_hovered(netn):
@@ -35,4 +40,4 @@ func apply_flop_on_hovered_netn(flop_stat):
 	return hovered_netn.receive_flop(flop_stat)
 
 func is_final_node_acquired():
-	return final_node.is_player_controlled
+	return final_node.is_player_here()

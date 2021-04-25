@@ -62,21 +62,30 @@ var is_hovered = false;
 export var is_final_node = false;
 export (netn_type) var node_type;
 
-export var is_player_controlled = false;
-var is_player_accessible = false;
+export var player_start = false;
 
 var current_state = netn_state.NONE;
 
 export (Array, Resource) var shop_content;
 
+func is_accessible_by_player():
+	for n in connected_nodes:
+		if n.current_state == netn_state.HERE:
+			return true
+	return false
+
+func is_player_here():
+	return current_state == netn_state.HERE
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	refresh_sprite()
+	pass
+
+func init():
 	for o in out_nodes:
 		connected_nodes.append(get_node(o))
-	if is_player_controlled:
-		acquired_by_player()
-	
+	refresh_sprite();
+
 
 func _process(delta):
 	update()
@@ -85,10 +94,10 @@ func _process(delta):
 func _draw():
 	#todo comment that when not level designing
 	for o in out_nodes:
-		draw_line(Vector2(0,0), get_node(o).position - self.position, Color.green if is_player_controlled or get_node(o).is_player_controlled else Color.red, 1)
+		draw_line(Vector2(0,0), get_node(o).position - self.position, Color.green if current_state == netn_state.HERE or get_node(o).current_state == netn_state.HERE else Color.red, 1)
 	
 	for o in connected_nodes:
-		draw_line(Vector2(0,0), o.position - self.position, Color.green if is_player_controlled or o.is_player_controlled else Color.red, 1)
+		draw_line(Vector2(0,0), o.position - self.position, Color.green if current_state == netn_state.HERE or o.current_state == netn_state.HERE else Color.red, 1)
 
 func init_link_with_out_nodes():
 	for o in out_nodes:
@@ -97,9 +106,14 @@ func init_link_with_out_nodes():
 		out_node.connected_nodes.append(self);
 
 func acquired_by_player():
-	is_player_controlled = true;
+	current_state = netn_state.HERE
 	for netn in connected_nodes:
-		netn.is_player_accessible = true;
+		if netn.current_state == netn_state.NONE:
+			netn.current_state = netn_state.NEUTRAL;
+		elif netn.current_state == netn_state.HERE:
+			netn.current_state = netn_state.PLAYER
+		netn.refresh_sprite()
+	refresh_sprite();
 	on_acquired_by_player();
 		
 func on_acquired_by_player():
@@ -123,13 +137,13 @@ func _on_Area2D_mouse_exited():
 	emit_signal("netn_unhovered",self)
 
 func receive_flop(flop_stat):
-	if is_player_accessible and not is_player_controlled:
-		acquired_by_player()
-		return true;
-	return false
+	acquired_by_player()
+	return true;
+
 	
 func can_receive_flop(flop_stat):
-	if is_player_accessible and not is_player_controlled:
+	#todo this is innacurate, it needs to change depending on the floppy
+	if is_accessible_by_player() and current_state != netn_state.HERE:
 		return true;
 	return false
 

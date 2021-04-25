@@ -13,7 +13,7 @@ script = ExtResource( 2 )
 position = Vector2( 39.1924, 161.915 )
 out_nodes = [ NodePath("../net_node2"), NodePath("../net_node3") ]
 node_type = 1
-is_player_controlled = true
+player_start = true
 
 [node name="net_node2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 290.197, 58.5571 )
