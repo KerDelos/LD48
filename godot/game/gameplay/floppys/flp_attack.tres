@@ -8,3 +8,4 @@ name = "Control the Node"
 attack = 1
 defense = 0
 cost = 1
+discard_cost = 1

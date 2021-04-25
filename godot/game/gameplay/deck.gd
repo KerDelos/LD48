@@ -50,9 +50,11 @@ func draw():
 		flop.init(draw_pile.pop_back())
 		flop.connect("flop_selected",self,"on_floppy_selected")
 
-func discard(flop):
+func discard(flop, was_consumed):
 	hand.remove(hand.find(flop))
 	discard_pile.append(flop.stats)
+	if !was_consumed:
+		consume_energy(flop.stats.discard_cost);
 	flop.queue_free()
 
 func spray_hand():
@@ -82,14 +84,17 @@ func floppy_released(floppy):
 	if netmap.is_netn_hovered() and can_play_flop(floppy.stats):
 		if netmap.apply_flop_on_hovered_netn(floppy.stats) :
 			consume(floppy)
-			discard(floppy)
 			get_parent().check_for_end()
 	elif discard_hovered:
-		discard(floppy)
+		discard(floppy,false)
 		get_parent().check_for_end()
 
 func consume(floppy):
-	energy = energy - floppy.stats.cost;
+	consume_energy(floppy.stats.cost)
+	discard(floppy,true)
+
+func consume_energy(conso):
+	energy = energy - conso;
 	$"../hud".set_energy(energy)
 
 func can_play_flop(stats):

@@ -9,6 +9,8 @@ func _ready():
 	pass # Replace with function body.
 
 func check_for_end():
+	if shop_instance != null:
+		return
 	if $netmap.is_final_node_acquired() :
 		var menu = end_menu.instance()
 		menu.init(true,null)
@@ -28,4 +30,5 @@ func open_shop(content):
 	shop_instance.connect("shop_closed",self,"shop_closed")
 	
 func shop_closed():
-	$deck.start_next_turn()
+	shop_instance = null
+	check_for_end()

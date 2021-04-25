@@ -8,3 +8,4 @@ name = "Junk"
 attack = 0
 defense = 0
 cost = 1
+discard_cost = 2
