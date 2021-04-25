@@ -19,6 +19,11 @@ var energy;
 var discard_hovered = false;
 var bin_next_card = false;
 
+func netmap():
+	return $"../../netmap"
+func main_scene():
+	return $"../.."
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	shuffle_deck_into_draw_pile()
@@ -93,15 +98,15 @@ func floppy_released(floppy):
 		return
 	floppy.unselect()
 	selected_flop = null
-	var netmap = $"../netmap"
+	var netmap = netmap()
 	if netmap.is_netn_hovered() and can_play_flop(floppy.stats):
 		if netmap.can_apply_flop_on_hovered_netn(floppy.stats) :
 			netmap.apply_flop_on_hovered_netn(floppy.stats)
 			consume(floppy)
-			get_parent().check_for_end()
+			main_scene().check_for_end()
 	elif discard_hovered:
 		discard(floppy,false)
-		get_parent().check_for_end()
+		main_scene().check_for_end()
 
 func consume(floppy):
 	consume_energy(floppy.stats.cost)

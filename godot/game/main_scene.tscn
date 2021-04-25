@@ -15,12 +15,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="netmap" parent="." instance=ExtResource( 2 )]
-position = Vector2( 108.497, 46.4313 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="deck" parent="." instance=ExtResource( 1 )]
+[node name="hud" parent="CanvasLayer" instance=ExtResource( 5 )]
+margin_left = 2.99658
+margin_top = -5.99319
+margin_right = 2.99658
+margin_bottom = -5.99316
+
+[node name="deck" parent="CanvasLayer" instance=ExtResource( 1 )]
 position = Vector2( 422.286, 491.776 )
 deck = [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ]
 
-[node name="hud" parent="." instance=ExtResource( 5 )]
-mouse_filter = 2
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 630.888, 276.163 )
+current = true
+zoom = Vector2( 1.2, 1.2 )
+
+[node name="netmap" parent="." instance=ExtResource( 2 )]
+position = Vector2( 63.5478, -19.4942 )

@@ -12,4 +12,4 @@ func init(energy_level):
 	set_energy(energy_level)
 	
 func set_energy(energy):
-	$HBoxContainer/EnergyCount.text = str(energy)
+	$NinePatchRect/HBoxContainer/EnergyCount.text = str(energy)
