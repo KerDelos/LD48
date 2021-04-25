@@ -4,13 +4,13 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Attack node"
-description = "Take control of a node."
-attack = 1
+name = "scan"
+description = "scan the network."
+attack = 0
 breach = 0
-scan = 0
+scan = 1
 move = 0
 ram = 0
 defense = 0
-cost = 1
+cost = 0
 discard_cost = 1

@@ -5,7 +5,12 @@
 [resource]
 script = ExtResource( 1 )
 name = "Junk"
+description = "nothing usefull. Cost 2 to discard"
 attack = 0
+breach = 0
+scan = 0
+move = 0
+ram = 0
 defense = 0
 cost = 1
 discard_cost = 2
