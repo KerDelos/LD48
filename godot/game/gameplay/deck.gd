@@ -134,11 +134,11 @@ func start_next_turn():
 
 func discard_hovered():
 	discard_hovered = true;
-	$Discard/Sprite.scale = Vector2(1.1,1.1)
+	$Discard/SpriteHolder.scale = Vector2(1.1,1.1)
 	
 func discard_unhovered():
 	discard_hovered = false;
-	$Discard/Sprite.scale = Vector2(1.0,1.0)
+	$Discard/SpriteHolder.scale = Vector2(1.0,1.0)
 
 
 func _on_Discard_mouse_entered():
