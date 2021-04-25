@@ -142,10 +142,17 @@ func receive_flop(flop_stat):
 
 	
 func can_receive_flop(flop_stat):
-	#todo this is innacurate, it needs to change depending on the floppy
-	if is_accessible_by_player() and current_state != netn_state.HERE:
-		return true;
-	return false
+	if flop_stat.move > 0 or flop_stat.attack > 0 or flop_stat.scan > 0:
+		return is_accessible_by_player() and current_state != netn_state.HERE
+	elif flop_stat.breach > 0:
+		return is_accessible_by_player() and current_state != netn_state.HERE \
+		and current_state != netn_state.PLAYER and node_type == netn_type.FIREWALL
+	elif flop_stat.move > 0:
+		return is_accessible_by_player() and current_state != netn_state.PLAYER
+	elif flop_stat.ram > 0:
+		return current_state == netn_state.HERE
+	else:
+		return false
 
 func refresh_sprite():
 	if sprites.has(node_type):
