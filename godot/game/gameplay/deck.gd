@@ -30,6 +30,19 @@ func _ready():
 	reset_energy()
 	init_hand()
 	spray_hand()
+	
+func _process(delta):
+	update();
+	
+
+func _draw():
+	if selected_flop != null:
+		var draw_color = Color.gray
+		var netmap = netmap()
+		if netmap.is_netn_hovered():
+			draw_color = Color.green if netmap.can_apply_flop_on_hovered_netn(selected_flop.stats) else Color.red
+		draw_line(selected_flop.position, get_local_mouse_position(), draw_color, 2)
+	
 
 func reset_energy():
 	energy = initial_energy;
@@ -38,6 +51,7 @@ func reset_energy():
 func shuffle_deck_into_draw_pile():
 	for card in deck:
 		draw_pile.append(card)
+	draw_pile.shuffle()
 
 func clear_hand():
 	for flop in hand:

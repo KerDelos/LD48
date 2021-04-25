@@ -23,15 +23,14 @@ func _ready():
 		c.connect("bin", get_parent(), "bin")
 	p_start.acquired_by_player()
 
+func is_netn_hovered():
+	return hovered_netn != null
 
 func on_netn_hovered(netn):
 	hovered_netn = netn
 	
 func on_netn_unhovered(netn):
 	hovered_netn = null
-
-func is_netn_hovered():
-	return hovered_netn != null
 
 func can_apply_flop_on_hovered_netn(flop_stat):
 	return hovered_netn.can_receive_flop(flop_stat)
