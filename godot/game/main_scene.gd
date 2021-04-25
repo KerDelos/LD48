@@ -38,3 +38,6 @@ func new_home(home):
 
 func energy_bonus(amount):
 	$deck.energy_bonus(amount)
+
+func bin():
+	$deck.bin()

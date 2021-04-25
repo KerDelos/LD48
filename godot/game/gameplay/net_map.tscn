@@ -63,4 +63,4 @@ node_type = 1
 [node name="net_node11" parent="." instance=ExtResource( 1 )]
 position = Vector2( 724.448, 65.4388 )
 out_nodes = [ NodePath("../net_node6") ]
-node_type = 2
+node_type = 5

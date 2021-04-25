@@ -16,6 +16,7 @@ func _ready():
 		c.connect("open_shop",get_parent(),"open_shop")
 		c.connect("new_home",get_parent(),"new_home")
 		c.connect("energy_bonus",get_parent(),"energy_bonus")
+		c.connect("bin", get_parent(), "bin")
 
 
 func on_netn_hovered(netn):

@@ -142,3 +142,7 @@ func _on_Discard_mouse_entered():
 
 func _on_Discard_mouse_exited():
 	discard_unhovered()
+
+func bin():
+	print("binned card")
+	pass
