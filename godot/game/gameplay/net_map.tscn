@@ -16,14 +16,14 @@ node_type = 1
 is_player_controlled = true
 
 [node name="net_node2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 290.197, 59.398 )
+position = Vector2( 290.197, 58.5571 )
 out_nodes = [ NodePath("../net_node3"), NodePath("../net_node4") ]
 node_type = 4
 
 [node name="net_node3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 156.393, 339.548 )
 out_nodes = [ NodePath("../net_node5") ]
-node_type = 2
+node_type = 5
 
 [node name="net_node4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 514.623, 217.032 )

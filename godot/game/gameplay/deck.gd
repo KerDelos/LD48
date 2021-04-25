@@ -17,6 +17,7 @@ var energy;
 
 
 var discard_hovered = false;
+var bin_next_card = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,9 +61,12 @@ func draw():
 		flop.connect("flop_selected",self,"on_floppy_selected")
 	spray_hand()
 
-func discard(flop, was_consumed):
+func discard(flop, was_consumed, was_binned = false):
 	hand.remove(hand.find(flop))
-	discard_pile.append(flop.stats)
+	if !was_binned:
+		discard_pile.append(flop.stats)
+	else :
+		deck.remove(deck.find(flop.stats))
 	if !was_consumed:
 		consume_energy(flop.stats.discard_cost);
 	flop.queue_free()
@@ -92,8 +96,8 @@ func floppy_released(floppy):
 	var netmap = $"../netmap"
 	if netmap.is_netn_hovered() and can_play_flop(floppy.stats):
 		if netmap.can_apply_flop_on_hovered_netn(floppy.stats) :
-			consume(floppy)
 			netmap.apply_flop_on_hovered_netn(floppy.stats)
+			consume(floppy)
 			get_parent().check_for_end()
 	elif discard_hovered:
 		discard(floppy,false)
@@ -101,7 +105,8 @@ func floppy_released(floppy):
 
 func consume(floppy):
 	consume_energy(floppy.stats.cost)
-	discard(floppy,true)
+	discard(floppy,true, bin_next_card)
+	bin_next_card = false;
 
 func consume_energy(conso):
 	energy = energy - conso;
@@ -144,5 +149,4 @@ func _on_Discard_mouse_exited():
 	discard_unhovered()
 
 func bin():
-	print("binned card")
-	pass
+	bin_next_card = true;
