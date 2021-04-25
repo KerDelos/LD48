@@ -1,4 +1,4 @@
-#tool
+tool
 
 extends Node2D
 
@@ -43,6 +43,10 @@ func _process(delta):
 	pass
 	
 func _draw():
+	#todo comment that when not level designing
+	for o in out_nodes:
+		draw_line(Vector2(0,0), get_node(o).position - self.position, Color.green if is_player_controlled or get_node(o).is_player_controlled else Color.red, 1)
+	
 	for o in connected_nodes:
 		draw_line(Vector2(0,0), o.position - self.position, Color.green if is_player_controlled or o.is_player_controlled else Color.red, 1)
 

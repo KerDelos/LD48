@@ -27,6 +27,7 @@ node_type = 2
 
 [node name="net_node4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 514.623, 217.032 )
+out_nodes = [ NodePath("../net_node11"), NodePath("../net_node8"), NodePath("../net_node7") ]
 is_final_node = true
 node_type = 1
 
@@ -34,3 +35,32 @@ node_type = 1
 position = Vector2( 341.267, 225.547 )
 node_type = 3
 shop_content = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ) ]
+
+[node name="net_node6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 930.212, 120.183 )
+node_type = 3
+
+[node name="net_node7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 750.876, 341.05 )
+out_nodes = [ NodePath("../net_node9") ]
+node_type = 2
+
+[node name="net_node8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 739.55, 205.132 )
+out_nodes = [ NodePath("../net_node9") ]
+node_type = 2
+
+[node name="net_node9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 920.774, 229.673 )
+out_nodes = [ NodePath("../net_node10") ]
+node_type = 2
+
+[node name="net_node10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1115.21, 244.775 )
+is_final_node = true
+node_type = 1
+
+[node name="net_node11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 724.448, 65.4388 )
+out_nodes = [ NodePath("../net_node6") ]
+node_type = 2
