@@ -15,6 +15,9 @@ var initial_hand_size = 2
 var initial_energy = 4
 var energy;
 
+
+var discard_hovered = false;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	shuffle_deck_into_draw_pile()
@@ -81,6 +84,9 @@ func floppy_released(floppy):
 			consume(floppy)
 			discard(floppy)
 			get_parent().check_for_end()
+	elif discard_hovered:
+		discard(floppy)
+		get_parent().check_for_end()
 
 func consume(floppy):
 	energy = energy - floppy.stats.cost;
@@ -101,3 +107,19 @@ func acquire_flop(stat):
 func start_next_turn():
 	while !draw_pile.empty() and hand.size() < initial_hand_size:
 		draw()
+
+func discard_hovered():
+	discard_hovered = true;
+	$Discard/Sprite.scale = Vector2(1.1,1.1)
+	
+func discard_unhovered():
+	discard_hovered = false;
+	$Discard/Sprite.scale = Vector2(1.0,1.0)
+
+
+func _on_Discard_mouse_entered():
+	discard_hovered()
+
+
+func _on_Discard_mouse_exited():
+	discard_unhovered()
