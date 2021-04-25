@@ -26,3 +26,13 @@ text = "Card title"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="."]
+margin_left = 1.0
+margin_top = 53.0
+margin_right = 147.0
+margin_bottom = 147.0
+text = "can do some stuff"
+__meta__ = {
+"_edit_use_anchors_": false
+}

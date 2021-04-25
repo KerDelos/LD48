@@ -80,7 +80,6 @@ func floppy_released(floppy):
 		if netmap.apply_flop_on_hovered_netn(floppy.stats) :
 			consume(floppy)
 			discard(floppy)
-			draw()
 			get_parent().check_for_end()
 
 func consume(floppy):
@@ -91,5 +90,14 @@ func can_play_flop(stats):
 	return energy >= stats.cost
 
 func can_player_continue():
-	return !hand.empty() and energy > 0
+	return (!hand.empty() or !draw_pile.empty() ) and energy > 0
 	#todo actually we should check if there is enough energy to play one of the remaining card
+
+func acquire_flop(stat):
+	deck.append(stat)
+	draw_pile.append(stat)
+	print("got a new card")
+
+func start_next_turn():
+	while !draw_pile.empty() and hand.size() < initial_hand_size:
+		draw()

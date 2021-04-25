@@ -17,10 +17,15 @@ func check_for_end():
 		var menu = end_menu.instance()
 		menu.init(false,null)
 		add_child(menu)
-	else:
-		pass
+	elif shop_instance == null:
+		$deck.start_next_turn()
 
 func open_shop(content):
 	shop_instance = shop_menu.instance()
 	shop_instance.init(content)
 	add_child(shop_instance)
+	shop_instance.connect("flop_acquired",$deck,"acquire_flop")
+	shop_instance.connect("shop_closed",self,"shop_closed")
+	
+func shop_closed():
+	$deck.start_next_turn()

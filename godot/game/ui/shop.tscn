@@ -25,21 +25,45 @@ margin_left = -123.0
 margin_top = -104.0
 margin_right = 149.0
 margin_bottom = 99.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_right = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SkipButton" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 4.0
-margin_right = 40.0
-margin_bottom = 24.0
+[node name="SkipButton" type="Button" parent="Panel"]
+margin_left = 120.704
+margin_top = 198.598
+margin_right = 160.704
+margin_bottom = 218.598
 text = "skip"
 
-[connection signal="pressed" from="Panel/VBoxContainer/SkipButton" to="." method="_on_SkipButton_pressed"]
+[node name="card1" type="TextureButton" parent="Panel"]
+margin_left = -227.522
+margin_top = 9.29301
+margin_right = -76.5216
+margin_bottom = 161.293
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="card3" type="TextureButton" parent="Panel"]
+margin_left = 301.764
+margin_top = 12.6998
+margin_right = 452.764
+margin_bottom = 164.7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="card2" type="TextureButton" parent="Panel"]
+margin_left = 64.1512
+margin_top = 23.6745
+margin_right = 215.151
+margin_bottom = 175.675
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Panel/SkipButton" to="." method="_on_SkipButton_pressed"]
+[connection signal="pressed" from="Panel/card1" to="." method="_on_card1_pressed"]
+[connection signal="pressed" from="Panel/card3" to="." method="_on_card3_pressed"]
+[connection signal="pressed" from="Panel/card2" to="." method="_on_card2_pressed"]

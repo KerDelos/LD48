@@ -13,3 +13,4 @@ func _ready():
 func init(stat):
 	$Title.text = stat.name
 	
+ 
