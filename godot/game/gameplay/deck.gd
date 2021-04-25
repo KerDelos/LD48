@@ -119,6 +119,10 @@ func acquire_flop(stat):
 	draw_pile.append(stat)
 	print("got a new card")
 
+func energy_bonus(amount):
+	initial_energy = initial_energy+1
+	consume_energy(-1)
+
 func start_next_turn():
 	while !draw_pile.empty() and hand.size() < initial_hand_size:
 		draw()

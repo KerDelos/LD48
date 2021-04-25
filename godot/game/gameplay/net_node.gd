@@ -6,15 +6,17 @@ signal netn_hovered(netn)
 signal netn_unhovered(netn)
 signal open_shop(shop_content)
 signal new_home(home)
+signal energy_bonus(amount)
 
 
-enum netn_type {NONE, HOME, MISC, DATA}
+enum netn_type {NONE, HOME, MISC, DATA, ENERGY, BIN, ENEMY, FIREWALL}
 
 var node_type_to_color = {
 	netn_type.NONE: Color.darkred,
 	netn_type.HOME: Color.darkgreen,
 	netn_type.MISC: Color.gray,
 	netn_type.DATA: Color.darkblue,
+	netn_type.ENERGY: Color.darkorange,
 }
 
 export (Array, NodePath) var out_nodes;
@@ -68,11 +70,14 @@ func on_acquired_by_player():
 		emit_signal("open_shop", shop_content)
 	elif node_type == netn_type.HOME:
 		emit_signal("new_home", self)
+	elif node_type == netn_type.ENERGY:
+		emit_signal("energy_bonus", 1)
+	elif node_type == netn_type.MISC:
+		pass
 
 func _on_Area2D_mouse_entered():
 	modulate = node_type_to_color[node_type].lightened(1.0)
 	emit_signal("netn_hovered",self)
-
 
 func _on_Area2D_mouse_exited():
 	modulate = node_type_to_color[node_type]

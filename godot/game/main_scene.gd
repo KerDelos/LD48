@@ -35,3 +35,6 @@ func shop_closed():
 
 func new_home(home):
 	$deck.new_home()
+
+func energy_bonus(amount):
+	$deck.energy_bonus(amount)
