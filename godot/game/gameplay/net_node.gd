@@ -57,7 +57,7 @@ var sprites ={
 	},
 }
 
-export (String) var netn_name;
+export (String) var netn_name = "###";
 
 export (Array, NodePath) var out_nodes;
 var in_nodes = [];
@@ -93,6 +93,7 @@ func init():
 	if node_type == netn_type.HOME:
 		current_state = netn_state.NEUTRAL
 	refresh_sprite();
+	$NameLabel.text = netn_name
 
 
 func _process(delta):

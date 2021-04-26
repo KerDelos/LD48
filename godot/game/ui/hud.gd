@@ -8,8 +8,12 @@ extends Control
 func _ready():
 	pass # Replace with function body.
 
-func init(energy_level):
-	set_energy(energy_level)
+func init(energy_level,total, draw_pile):
+	set_energy(energy_level,total)
 	
-func set_energy(energy):
-	$NinePatchRect/HBoxContainer/EnergyCount.text = str(energy)
+func set_energy(energy,total):
+	$NinePatchRect/VBoxContainer/HBoxContainer/EnergyCount.text = str(energy)
+	$NinePatchRect/VBoxContainer/HBoxContainer/EnergyTotal.text = str(total)
+
+func set_draw_pile(nb):
+	$NinePatchRect/VBoxContainer/HBoxContainer2/DrawCount.text = str(nb)

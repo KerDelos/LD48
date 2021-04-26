@@ -48,7 +48,7 @@ func _draw():
 
 func reset_energy():
 	energy = initial_energy;
-	$"../hud".set_energy(energy)
+	$"../hud".set_energy(energy, initial_energy)
 	
 func shuffle_deck_into_draw_pile():
 	for card in deck:
@@ -74,12 +74,17 @@ func new_home():
 	pass
 	
 func draw():
-	if !draw_pile.empty():
-		var flop = floppy_scene.instance()
-		add_child(flop)
-		hand.append(flop)
-		flop.init(draw_pile.pop_back())
-		flop.connect("flop_selected",self,"on_floppy_selected")
+	if draw_pile.empty():
+		discard_pile.shuffle()
+		draw_pile.append_array(discard_pile)
+		discard_pile.clear()
+		
+	var flop = floppy_scene.instance()
+	add_child(flop)
+	hand.append(flop)
+	flop.init(draw_pile.pop_back())
+	flop.connect("flop_selected",self,"on_floppy_selected")
+	
 	spray_hand()
 	SoundManager.play_sfx(SoundManager.sfx_flop_draw)
 
@@ -103,6 +108,7 @@ func spray_hand():
 	for flop in hand:
 		flop.position = lerp($Start.position,$End.position,(float(i)/hand.size())-(card_interval/2.0))
 		i = i+1
+	$"../hud".set_draw_pile(draw_pile.size())
 
 func _input(event):
 	if event is InputEventMouseButton \
@@ -138,14 +144,13 @@ func consume(floppy):
 
 func consume_energy(conso):
 	energy = energy - conso;
-	$"../hud".set_energy(energy)
+	$"../hud".set_energy(energy, initial_energy)
 
 func can_play_flop(stats):
 	return energy >= stats.cost
 
 func can_player_continue():
-	return (!hand.empty() or !draw_pile.empty() ) and energy > 0
-	#todo actually we should check if there is enough energy to play one of the remaining card
+	return energy > 0
 
 func acquire_flop(stat):
 	deck.append(stat)
@@ -160,7 +165,7 @@ func start_next_turn():
 	if dont_draw_next:
 		dont_draw_next = false
 		return;
-	while !draw_pile.empty() and hand.size() < initial_hand_size:
+	while hand.size() < initial_hand_size:
 		draw()
 
 func discard_hovered():
