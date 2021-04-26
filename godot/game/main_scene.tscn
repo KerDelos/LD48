@@ -37,3 +37,18 @@ zoom = Vector2( 1.4, 1.4 )
 
 [node name="netmap" parent="." instance=ExtResource( 2 )]
 position = Vector2( 63.5478, -19.4942 )
+
+[node name="UpDetect" type="VisibilityNotifier2D" parent="netmap"]
+position = Vector2( 597.293, -330.134 )
+scale = Vector2( 2.17725, 5.54084 )
+
+[node name="LeftDetect" type="VisibilityNotifier2D" parent="netmap"]
+position = Vector2( -406.643, 216.483 )
+
+[node name="DownDetect" type="VisibilityNotifier2D" parent="netmap"]
+position = Vector2( 621.486, 966.485 )
+scale = Vector2( 3.18633, 6.71809 )
+
+[node name="RightDetect" type="VisibilityNotifier2D" parent="netmap"]
+position = Vector2( 1586.9, 229.988 )
+scale = Vector2( 0.8, 1.1 )

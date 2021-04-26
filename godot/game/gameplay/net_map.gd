@@ -9,6 +9,8 @@ var final_node = null
 func _ready():
 	var p_start = null
 	for c in get_children():
+		if c is VisibilityNotifier2D:
+			continue
 		if c.is_final_node:
 			final_node = c
 		if c.player_start:

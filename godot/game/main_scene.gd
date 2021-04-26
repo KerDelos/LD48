@@ -8,6 +8,28 @@ var shop_instance = null
 func _ready():
 	pass # Replace with function body.
 
+func _process(_event):
+	var camera_vec = Vector2(0,0)
+	if Input.is_action_pressed("ui_up"):
+		camera_vec.y -= 1
+	if Input.is_action_pressed("ui_down"):
+		camera_vec.y += 1
+	if Input.is_action_pressed("ui_left"):
+		camera_vec.x -= 1
+	if Input.is_action_pressed("ui_right"):
+		camera_vec.x += 1
+		
+	if $netmap/UpDetect.is_on_screen() && camera_vec.y < 0:
+		camera_vec.y = 0
+	if $netmap/DownDetect.is_on_screen() && camera_vec.y > 0:
+		camera_vec.y = 0
+	if $netmap/LeftDetect.is_on_screen() && camera_vec.x < 0:
+		camera_vec.x = 0
+	if $netmap/RightDetect.is_on_screen() && camera_vec.x > 0:
+		camera_vec.x = 0
+			
+	$Camera2D.position = $Camera2D.position + camera_vec*5
+
 func check_for_end():
 	if shop_instance != null:
 		return
