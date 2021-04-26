@@ -12,6 +12,8 @@ signal enemy_attack()
 signal draw_flops(nb)
 
 
+export var crop_distance = 110
+
 enum netn_type {NONE, HOME, MISC, DATA, ENERGY, ENEMY, FIREWALL}
 enum netn_state {NONE, NEUTRAL, PLAYER, HERE}
 
@@ -96,12 +98,15 @@ func _process(delta):
 	pass
 	
 func _draw():
-	#todo comment that when not level designing
 	for o in out_nodes:
-		draw_line(Vector2(0,0), get_node(o).position - self.position, Color.green if current_state == netn_state.HERE or get_node(o).current_state == netn_state.HERE else Color.red, 1)
+		var other = get_node(o).position - self.position
+		var unit = other.normalized()
+		draw_line(Vector2(0,0)+unit*crop_distance, other-unit*crop_distance, Color.green if current_state == netn_state.HERE or get_node(o).current_state == netn_state.HERE else Color.white, 1)
 	
 	for o in connected_nodes:
-		draw_line(Vector2(0,0), o.position - self.position, Color.green if current_state == netn_state.HERE or o.current_state == netn_state.HERE else Color.red, 1)
+		var other = o.position - self.position
+		var unit = other.normalized()
+		draw_line(Vector2(0,0)+unit*crop_distance, other-unit*crop_distance, Color.green if current_state == netn_state.HERE or o.current_state == netn_state.HERE else Color.white, 1)
 
 func init_link_with_out_nodes():
 	for o in out_nodes:

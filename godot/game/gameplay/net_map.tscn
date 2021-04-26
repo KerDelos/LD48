@@ -11,57 +11,57 @@ position = Vector2( 131.66, 83.8491 )
 script = ExtResource( 2 )
 
 [node name="net_node" parent="." instance=ExtResource( 1 )]
-position = Vector2( 39.1924, 161.915 )
+position = Vector2( -28.8076, 85.915 )
 out_nodes = [ NodePath("../net_node2"), NodePath("../net_node3") ]
 node_type = 1
 player_start = true
 
 [node name="net_node2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 290.197, 58.5571 )
+position = Vector2( 294.197, -45.4429 )
 out_nodes = [ NodePath("../net_node3"), NodePath("../net_node4") ]
 node_type = 6
 
 [node name="net_node3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 156.393, 339.548 )
+position = Vector2( 127.393, 353.548 )
 out_nodes = [ NodePath("../net_node5") ]
 node_type = 5
 
 [node name="net_node4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 514.623, 217.032 )
+position = Vector2( 575.623, 254.032 )
 out_nodes = [ NodePath("../net_node11"), NodePath("../net_node8"), NodePath("../net_node7") ]
 is_final_node = true
 node_type = 1
 
 [node name="net_node5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 341.267, 225.547 )
+position = Vector2( 375.267, 143.547 )
 node_type = 3
 shop_content = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ]
 
 [node name="net_node6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 930.212, 120.183 )
+position = Vector2( 1249.21, 50.183 )
 node_type = 3
 
 [node name="net_node7" parent="." instance=ExtResource( 1 )]
-position = Vector2( 750.876, 341.05 )
+position = Vector2( 839.876, 334.05 )
 out_nodes = [ NodePath("../net_node9") ]
 node_type = 2
 
 [node name="net_node8" parent="." instance=ExtResource( 1 )]
-position = Vector2( 739.55, 205.132 )
+position = Vector2( 875.55, 147.132 )
 out_nodes = [ NodePath("../net_node9") ]
 node_type = 2
 
 [node name="net_node9" parent="." instance=ExtResource( 1 )]
-position = Vector2( 920.774, 229.673 )
+position = Vector2( 1049.77, 295.673 )
 out_nodes = [ NodePath("../net_node10") ]
 node_type = 2
 
 [node name="net_node10" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1115.21, 244.775 )
+position = Vector2( 1238.21, 243.775 )
 is_final_node = true
 node_type = 1
 
 [node name="net_node11" parent="." instance=ExtResource( 1 )]
-position = Vector2( 724.448, 65.4388 )
+position = Vector2( 852.448, -18.5612 )
 out_nodes = [ NodePath("../net_node6") ]
 node_type = 5
