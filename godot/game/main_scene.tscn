@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/gameplay/deck.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/net_map.tscn" type="PackedScene" id=2]
-[ext_resource path="res://game/gameplay/floppys/flp_attack.tres" type="Resource" id=3]
 [ext_resource path="res://game/main_scene.gd" type="Script" id=4]
 [ext_resource path="res://game/ui/hud.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/gameplay/floppys/flp_scan.tres" type="Resource" id=6]
 [ext_resource path="res://game/gameplay/floppys/flp_move.tres" type="Resource" id=7]
-[ext_resource path="res://game/gameplay/floppys/flp_breach.tres" type="Resource" id=8]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -28,15 +26,15 @@ margin_bottom = -5.99316
 
 [node name="deck" parent="CanvasLayer" instance=ExtResource( 1 )]
 position = Vector2( 521.174, 536.725 )
-deck = [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 7 ) ]
+deck = [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ) ]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 630.888, 276.163 )
 current = true
-zoom = Vector2( 1.4, 1.4 )
+zoom = Vector2( 1.2, 1.2 )
 
 [node name="netmap" parent="." instance=ExtResource( 2 )]
-position = Vector2( 63.5478, -19.4942 )
+position = Vector2( 526.041, 79.7315 )
 
 [node name="UpDetect" type="VisibilityNotifier2D" parent="netmap"]
 position = Vector2( 597.293, -330.134 )

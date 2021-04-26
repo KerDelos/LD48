@@ -9,7 +9,7 @@ var final_node = null
 func _ready():
 	var p_start = null
 	for c in get_children():
-		if c is VisibilityNotifier2D:
+		if c is VisibilityNotifier2D or c is TileMap:
 			continue
 		if c.is_final_node:
 			final_node = c
@@ -25,6 +25,7 @@ func _ready():
 		c.connect("firewall_attack",get_parent(),"firewall_attack")
 		c.connect("enemy_attack",get_parent(), "enemy_attack")
 		c.connect("draw_flops", get_parent(),"draw_flops")
+	p_start.reveal_name()
 	p_start.acquired_by_player()
 
 func is_netn_hovered():

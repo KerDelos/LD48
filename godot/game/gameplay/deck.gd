@@ -14,7 +14,7 @@ var selected_flop = null
 
 var initial_hand_size = 2
 
-var initial_energy = 4
+export var initial_energy = 4
 var energy;
 
 

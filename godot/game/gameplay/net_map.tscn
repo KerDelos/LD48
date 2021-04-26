@@ -3,7 +3,7 @@
 [ext_resource path="res://game/gameplay/net_node.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/net_map.gd" type="Script" id=2]
 [ext_resource path="res://game/gameplay/floppys/flp_attack.tres" type="Resource" id=3]
-[ext_resource path="res://game/gameplay/floppys/flp_junk.tres" type="Resource" id=4]
+[ext_resource path="res://game/gameplay/floppys/flp_move.tres" type="Resource" id=4]
 [ext_resource path="res://game/gameplay/floppys/flp_ram.tres" type="Resource" id=5]
 
 [node name="Node2D" type="Node2D"]
@@ -11,57 +11,82 @@ position = Vector2( 131.66, 83.8491 )
 script = ExtResource( 2 )
 
 [node name="net_node" parent="." instance=ExtResource( 1 )]
-position = Vector2( -28.8076, 85.915 )
-out_nodes = [ NodePath("../net_node2"), NodePath("../net_node3") ]
+position = Vector2( 60.34, 236.151 )
+netn_name = "H4ckD3ck"
+out_nodes = [ NodePath("../net_node2") ]
 node_type = 1
 player_start = true
 
+[node name="TileMap" type="TileMap" parent="."]
+visible = false
+mode = 1
+cell_size = Vector2( 64, 32 )
+format = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="net_node2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 294.197, -45.4429 )
-out_nodes = [ NodePath("../net_node3"), NodePath("../net_node4") ]
-node_type = 6
+position = Vector2( -227.66, 92.1509 )
+netn_name = "34sy T4g3t"
+out_nodes = [ NodePath("../net_node3") ]
+node_type = 2
 
 [node name="net_node3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 127.393, 353.548 )
-out_nodes = [ NodePath("../net_node5") ]
-node_type = 5
+position = Vector2( 44.34, -43.8491 )
+netn_name = "Tru3 Pow3r"
+out_nodes = [ NodePath("../net_node4") ]
+node_type = 4
 
 [node name="net_node4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 575.623, 254.032 )
-out_nodes = [ NodePath("../net_node11"), NodePath("../net_node8"), NodePath("../net_node7") ]
-is_final_node = true
-node_type = 1
+position = Vector2( 332.34, 100.151 )
+netn_name = "L4st t3st"
+out_nodes = [ NodePath("../net_node5") ]
+node_type = 2
 
 [node name="net_node5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 375.267, 143.547 )
-node_type = 3
-shop_content = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ]
+position = Vector2( 604.34, 236.151 )
+netn_name = "south bridge"
+out_nodes = [ NodePath("../net_node6"), NodePath("../net_node7") ]
+node_type = 1
 
 [node name="net_node6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1249.21, 50.183 )
-node_type = 3
+position = Vector2( 924.34, 76.1509 )
+netn_name = "archive proxy"
+out_nodes = [ NodePath("../net_node10"), NodePath("../net_node8") ]
+node_type = 2
 
 [node name="net_node7" parent="." instance=ExtResource( 1 )]
-position = Vector2( 839.876, 334.05 )
-out_nodes = [ NodePath("../net_node9") ]
-node_type = 2
-
-[node name="net_node8" parent="." instance=ExtResource( 1 )]
-position = Vector2( 875.55, 147.132 )
-out_nodes = [ NodePath("../net_node9") ]
-node_type = 2
-
-[node name="net_node9" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1049.77, 295.673 )
+position = Vector2( 924.34, 396.151 )
+netn_name = "www.super-sercure-old.com"
 out_nodes = [ NodePath("../net_node10") ]
 node_type = 2
 
-[node name="net_node10" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1238.21, 243.775 )
-is_final_node = true
+[node name="net_node8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 924.34, -243.849 )
+netn_name = "Archives"
+node_type = 3
+shop_content = [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ]
+
+[node name="net_node9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1244.34, -83.8491 )
+netn_name = "north bridge"
+out_nodes = [ NodePath("../net_node11") ]
 node_type = 1
 
+[node name="net_node10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1244.34, 236.151 )
+netn_name = "www.super-secure.com"
+out_nodes = [ NodePath("../net_node9") ]
+node_type = 2
+
 [node name="net_node11" parent="." instance=ExtResource( 1 )]
-position = Vector2( 852.448, -18.5612 )
-out_nodes = [ NodePath("../net_node6") ]
-node_type = 5
+position = Vector2( 1692.34, -307.849 )
+netn_name = "North Bridge"
+node_type = 1
+
+[node name="net_node12" parent="." instance=ExtResource( 1 )]
+position = Vector2( -187.66, -275.849 )
+netn_name = "Final"
+is_final_node = true
+node_type = 1
