@@ -115,7 +115,13 @@ func acquired_by_player():
 		netn.refresh_sprite()
 	refresh_sprite();
 	on_acquired_by_player();
-		
+
+func scan_adjacent_nodes():
+	for netn in connected_nodes:
+		if netn.current_state == netn_state.NONE:
+			netn.current_state = netn_state.NEUTRAL;
+		netn.refresh_sprite()
+
 func on_acquired_by_player():
 	if node_type == netn_type.DATA:
 		emit_signal("open_shop", shop_content)
@@ -137,7 +143,10 @@ func _on_Area2D_mouse_exited():
 	emit_signal("netn_unhovered",self)
 
 func receive_flop(flop_stat):
-	acquired_by_player()
+	if flop_stat.scan > 0:
+		scan_adjacent_nodes();
+	else:
+		acquired_by_player()
 	return true;
 
 	
