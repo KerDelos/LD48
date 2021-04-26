@@ -91,6 +91,7 @@ func discard(flop, was_consumed, was_binned = false):
 	if !was_consumed:
 		consume_energy(flop.stats.discard_cost);
 	flop.queue_free()
+	spray_hand();
 
 func spray_hand():
 	var i = 1
