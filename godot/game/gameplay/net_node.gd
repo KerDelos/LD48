@@ -57,6 +57,8 @@ var sprites ={
 	},
 }
 
+export (String) var netn_name;
+
 export (Array, NodePath) var out_nodes;
 var in_nodes = [];
 var connected_nodes = []
@@ -148,11 +150,15 @@ func _on_Area2D_mouse_entered():
 	refresh_sprite()
 	emit_signal("netn_hovered",self)
 	SoundManager.play_sfx(SoundManager.sfx_hover)
+	$NameLabel.visible = true;
+	$HereLabel.visible = false
 
 func _on_Area2D_mouse_exited():
 	is_hovered = false;
 	refresh_sprite()
 	emit_signal("netn_unhovered",self)
+	$NameLabel.visible = false;
+	$HereLabel.visible = current_state == netn_state.HERE
 
 func receive_flop(flop_stat):
 	if flop_stat.ram > 0:
@@ -189,3 +195,5 @@ func refresh_sprite():
 	if sprites.has(node_type):
 		var sprite_set = sprites[node_type]
 		$Sprite.texture = sprite_set[current_state][1] if is_hovered else sprite_set[current_state][0];
+	$NameLabel.visible = false;
+	$HereLabel.visible = current_state == netn_state.HERE

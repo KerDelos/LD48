@@ -18,5 +18,31 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
 
+[node name="HereLabel" type="Label" parent="."]
+visible = false
+margin_left = -100.0
+margin_top = 58.9489
+margin_right = 100.0
+margin_bottom = 72.9489
+text = "You are here"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="."]
+visible = false
+margin_left = -100.0
+margin_top = 58.9489
+margin_right = 100.0
+margin_bottom = 72.9489
+text = "###"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
