@@ -93,10 +93,10 @@ func discard(flop, was_consumed, was_binned = false):
 	flop.queue_free()
 
 func spray_hand():
-	var i = 0
+	var i = 1
+	var card_interval = 1.0/float(hand.size())
 	for flop in hand:
-		var pos = lerp($Start.position,$End.position,float(i)/hand.size())
-		flop.position = lerp($Start.position,$End.position,float(i)/hand.size())
+		flop.position = lerp($Start.position,$End.position,(float(i)/hand.size())-(card_interval/2.0))
 		i = i+1
 
 func _input(event):
@@ -163,6 +163,9 @@ func discard_unhovered():
 	discard_hovered = false;
 	$Discard/SpriteHolder.scale = Vector2(1.0,1.0)
 
+func draw_flops(nb):
+	for i in range(0,nb):
+		draw()
 
 func _on_Discard_mouse_entered():
 	discard_hovered()

@@ -22,6 +22,7 @@ func _ready():
 		c.connect("energy_bonus",get_parent(),"energy_bonus")
 		c.connect("firewall_attack",get_parent(),"firewall_attack")
 		c.connect("enemy_attack",get_parent(), "enemy_attack")
+		c.connect("draw_flops", get_parent(),"draw_flops")
 	p_start.acquired_by_player()
 
 func is_netn_hovered():

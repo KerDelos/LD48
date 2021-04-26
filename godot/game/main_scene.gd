@@ -50,5 +50,8 @@ func firewall_attack():
 func center_camera_on_node(netn):
 	$Camera2D.position = netn.position
 
+func draw_flops(nb):
+	deck().draw_flops(nb);
+
 func bin():
 	deck().bin()

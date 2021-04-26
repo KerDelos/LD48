@@ -9,6 +9,7 @@ signal new_home(home)
 signal energy_bonus(amount)
 signal firewall_attack()
 signal enemy_attack()
+signal draw_flops(nb)
 
 
 enum netn_type {NONE, HOME, MISC, DATA, ENERGY, ENEMY, FIREWALL}
@@ -117,7 +118,8 @@ func acquired_by_player():
 			netn.current_state = netn_state.PLAYER
 		netn.refresh_sprite()
 	refresh_sprite();
-	on_acquired_by_player();
+	if current_state != netn_state.PLAYER:
+		on_acquired_by_player();
 
 func scan_adjacent_nodes():
 	for netn in connected_nodes:
@@ -146,7 +148,9 @@ func _on_Area2D_mouse_exited():
 	emit_signal("netn_unhovered",self)
 
 func receive_flop(flop_stat):
-	if flop_stat.scan > 0:
+	if flop_stat.ram > 0:
+		emit_signal("draw_flops", flop_stat.ram)
+	elif flop_stat.scan > 0:
 		scan_adjacent_nodes();
 	elif node_type == netn_type.FIREWALL :
 		if flop_stat.breach <= 0:
@@ -156,10 +160,8 @@ func receive_flop(flop_stat):
 		if flop_stat.attack <= 0:
 			emit_signal("enemy_attack")
 		acquired_by_player()
-	elif node_type == netn_type.DATA or node_type == netn_type.HOME or node_type == netn_type.ENERGY or node_type == netn_type.MISC:
-		acquired_by_player()
 	else:
-		assert("error unknow node type")
+		acquired_by_player()
 	return true;
 
 	
