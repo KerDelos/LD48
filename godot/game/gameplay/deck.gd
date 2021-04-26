@@ -172,10 +172,12 @@ func discard_hovered():
 	discard_hovered = true;
 	$Discard/SpriteHolder.scale = Vector2(1.1,1.1)
 	SoundManager.play_sfx(SoundManager.sfx_hover)
+	$Discard/SpriteHolder/Label.visible = true;
 	
 func discard_unhovered():
 	discard_hovered = false;
 	$Discard/SpriteHolder.scale = Vector2(1.0,1.0)
+	$Discard/SpriteHolder/Label.visible = false;
 
 func draw_flops(nb):
 	for i in range(0,nb):

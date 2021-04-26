@@ -16,7 +16,7 @@ func _ready():
 
 func init(flop_stats):
 	stats = flop_stats
-	$Visual.init(stats)
+	$Node2D/Visual.init(stats)
 
 func _on_Area2D_mouse_entered():
 	scale = Vector2(1.2,1.2);

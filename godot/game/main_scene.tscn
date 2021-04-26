@@ -27,13 +27,13 @@ margin_right = 2.99658
 margin_bottom = -5.99316
 
 [node name="deck" parent="CanvasLayer" instance=ExtResource( 1 )]
-position = Vector2( 422.286, 491.776 )
+position = Vector2( 521.174, 536.725 )
 deck = [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 7 ) ]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 630.888, 276.163 )
 current = true
-zoom = Vector2( 1.2, 1.2 )
+zoom = Vector2( 1.4, 1.4 )
 
 [node name="netmap" parent="." instance=ExtResource( 2 )]
 position = Vector2( 63.5478, -19.4942 )

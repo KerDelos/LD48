@@ -181,7 +181,7 @@ func receive_flop(flop_stat):
 	
 func can_receive_flop(flop_stat):
 	if flop_stat.scan > 0:
-		return current_state != netn_state.NONE
+		return current_state != netn_state.NONE and node_type != netn_type.HOME
 	if flop_stat.move > 0 or flop_stat.attack > 0:
 		return is_accessible_by_player() and current_state != netn_state.HERE
 	elif flop_stat.breach > 0:
