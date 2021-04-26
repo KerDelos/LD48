@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource( 1 )
 name = "scan"
-description = "scan the network."
+description = "1 CPU cycle
+Reveal the type of adjacent nodes."
 attack = 0
 breach = 0
 scan = 1

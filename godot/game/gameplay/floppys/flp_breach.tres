@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource( 1 )
 name = "Breach"
-description = "Breach a firewall."
+description = "1 CPU cycle
+Breach a firewall without penalty."
 attack = 0
 breach = 1
 scan = 0

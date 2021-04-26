@@ -33,7 +33,7 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
-margin_right = 72.0
+margin_right = 167.0
 margin_bottom = 14.0
 mouse_filter = 2
 __meta__ = {
@@ -41,32 +41,32 @@ __meta__ = {
 }
 
 [node name="EnergyLabel" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
-margin_right = 55.0
+margin_right = 150.0
 margin_bottom = 14.0
-text = "energy : "
+text = "CPU cycles remaining : "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="EnergyCount" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
-margin_left = 59.0
-margin_right = 59.0
+margin_left = 154.0
+margin_right = 154.0
 margin_bottom = 14.0
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
-margin_left = 63.0
-margin_right = 68.0
+margin_left = 158.0
+margin_right = 163.0
 margin_bottom = 14.0
 text = "/"
 
 [node name="EnergyTotal" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
-margin_left = 72.0
-margin_right = 72.0
+margin_left = 167.0
+margin_right = 167.0
 margin_bottom = 14.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
 margin_top = 18.0
-margin_right = 72.0
+margin_right = 167.0
 margin_bottom = 32.0
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer2"]

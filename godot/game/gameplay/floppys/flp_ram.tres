@@ -5,7 +5,9 @@
 [resource]
 script = ExtResource( 1 )
 name = "Download some ram"
-description = "Draw 2 cards"
+description = "1 CPU Cycle
+Draw 1 additional Floppy.
+Can only be played on your position."
 attack = 0
 breach = 0
 scan = 0

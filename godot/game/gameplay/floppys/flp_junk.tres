@@ -5,7 +5,9 @@
 [resource]
 script = ExtResource( 1 )
 name = "Junk"
-description = "nothing usefull. Cost 2 to discard"
+description = "2 CPU cycles to DISCARD..
+Remains of past mistakes
+Cannot do anything useful.."
 attack = 0
 breach = 0
 scan = 0

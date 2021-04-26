@@ -10,6 +10,7 @@ func _ready():
 
 func init(stat):
 	$Title.text = stat.name
+	$Label.text = stat.description
 	
  
 func hover():

@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Surf"
-description = "Move on the network"
+name = "Move"
+description = "1 CPU cycle
+Move on the network."
 attack = 0
 breach = 0
 scan = 0
