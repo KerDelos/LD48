@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://resources/ui/splash_2.png" type="Texture" id=1]
 [ext_resource path="res://game/ui/shop.gd" type="Script" id=2]
 
 [node name="Control" type="Control"]
@@ -16,54 +17,56 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -123.0
-margin_top = -104.0
-margin_right = 149.0
-margin_bottom = 99.0
+[node name="Panel" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SkipButton" type="Button" parent="Panel"]
-margin_left = 120.704
-margin_top = 198.598
-margin_right = 160.704
-margin_bottom = 218.598
+visible = false
+margin_left = 898.445
+margin_top = 284.221
+margin_right = 938.445
+margin_bottom = 304.221
 text = "skip"
 
 [node name="card1" type="TextureButton" parent="Panel"]
-margin_left = -227.522
-margin_top = 9.29301
-margin_right = -76.5216
-margin_bottom = 161.293
+margin_left = 147.0
+margin_top = 213.0
+margin_right = 319.0
+margin_bottom = 365.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="card3" type="TextureButton" parent="Panel"]
-margin_left = 301.764
-margin_top = 12.6998
-margin_right = 452.764
-margin_bottom = 164.7
+margin_left = 415.928
+margin_top = 216.054
+margin_right = 566.928
+margin_bottom = 368.054
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="card2" type="TextureButton" parent="Panel"]
-margin_left = 64.1512
-margin_top = 23.6745
-margin_right = 215.151
-margin_bottom = 175.675
+margin_left = 696.809
+margin_top = 229.407
+margin_right = 847.809
+margin_bottom = 381.408
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [connection signal="pressed" from="Panel/SkipButton" to="." method="_on_SkipButton_pressed"]
+[connection signal="mouse_entered" from="Panel/card1" to="." method="_on_card1_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/card1" to="." method="_on_card1_mouse_exited"]
 [connection signal="pressed" from="Panel/card1" to="." method="_on_card1_pressed"]
+[connection signal="mouse_entered" from="Panel/card3" to="." method="_on_card3_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/card3" to="." method="_on_card3_mouse_exited"]
 [connection signal="pressed" from="Panel/card3" to="." method="_on_card3_pressed"]
+[connection signal="mouse_entered" from="Panel/card2" to="." method="_on_card2_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/card2" to="." method="_on_card2_mouse_exited"]
 [connection signal="pressed" from="Panel/card2" to="." method="_on_card2_pressed"]

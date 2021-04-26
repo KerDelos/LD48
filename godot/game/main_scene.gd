@@ -13,19 +13,19 @@ func check_for_end():
 		return
 	if $netmap.is_final_node_acquired() :
 		var menu = end_menu.instance()
-		menu.init(true,null)
+		$CanvasLayer.menu.init(true,null)
 		add_child(menu)
 	elif !deck().can_player_continue():
 		var menu = end_menu.instance()
 		menu.init(false,null)
-		add_child(menu)
+		$CanvasLayer.add_child(menu)
 	elif shop_instance == null:
 		deck().start_next_turn()
 
 func open_shop(content):
 	shop_instance = shop_menu.instance()
 	shop_instance.init(content)
-	add_child(shop_instance)
+	$CanvasLayer.add_child(shop_instance)
 	shop_instance.connect("flop_acquired",deck(),"acquire_flop")
 	shop_instance.connect("shop_closed",self,"shop_closed")
 	

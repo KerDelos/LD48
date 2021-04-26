@@ -42,3 +42,27 @@ func acquire_flop(flop_stats):
 	emit_signal("flop_acquired",flop_stats)
 	emit_signal("shop_closed")
 	queue_free()
+
+func hover(card):
+	card.hover()
+	
+func unhover(card):
+	card.unhover()
+
+func _on_card1_mouse_entered():
+	hover($Panel/card1.get_child(0))
+
+func _on_card1_mouse_exited():
+	unhover($Panel/card1.get_child(0))
+
+func _on_card2_mouse_entered():
+	hover($Panel/card2.get_child(0))
+
+func _on_card2_mouse_exited():
+	unhover($Panel/card2.get_child(0))
+	
+func _on_card3_mouse_entered():
+	hover($Panel/card3.get_child(0))
+
+func _on_card3_mouse_exited():
+	unhover($Panel/card3.get_child(0))
