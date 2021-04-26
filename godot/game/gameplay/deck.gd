@@ -2,6 +2,8 @@ extends Node2D
 
 var floppy_scene = preload("floppy.tscn")
 
+var junk_stat = preload("res://game/gameplay/floppys/flp_junk.tres");
+
 export (Array, Resource)  var deck;
 
 var draw_pile = []
@@ -17,7 +19,7 @@ var energy;
 
 
 var discard_hovered = false;
-var bin_next_card = false;
+var dont_draw_next = false;
 
 func netmap():
 	return $"../../netmap"
@@ -124,8 +126,7 @@ func floppy_released(floppy):
 
 func consume(floppy):
 	consume_energy(floppy.stats.cost)
-	discard(floppy,true, bin_next_card)
-	bin_next_card = false;
+	discard(floppy,true)
 
 func consume_energy(conso):
 	energy = energy - conso;
@@ -148,6 +149,9 @@ func energy_bonus(amount):
 	consume_energy(-1)
 
 func start_next_turn():
+	if dont_draw_next:
+		dont_draw_next = false
+		return;
 	while !draw_pile.empty() and hand.size() < initial_hand_size:
 		draw()
 
@@ -163,9 +167,11 @@ func discard_unhovered():
 func _on_Discard_mouse_entered():
 	discard_hovered()
 
-
 func _on_Discard_mouse_exited():
 	discard_unhovered()
 
-func bin():
-	bin_next_card = true;
+func enemy_attack():
+	acquire_flop(junk_stat)
+
+func firewall_attack():
+	dont_draw_next = true

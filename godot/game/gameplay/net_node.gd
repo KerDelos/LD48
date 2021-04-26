@@ -7,7 +7,8 @@ signal netn_unhovered(netn)
 signal open_shop(shop_content)
 signal new_home(home)
 signal energy_bonus(amount)
-signal bin()
+signal firewall_attack()
+signal enemy_attack()
 
 
 enum netn_type {NONE, HOME, MISC, DATA, ENERGY, ENEMY, FIREWALL}
@@ -84,6 +85,8 @@ func _ready():
 func init():
 	for o in out_nodes:
 		connected_nodes.append(get_node(o))
+	if node_type == netn_type.HOME:
+		current_state = netn_state.NEUTRAL
 	refresh_sprite();
 
 
@@ -145,19 +148,29 @@ func _on_Area2D_mouse_exited():
 func receive_flop(flop_stat):
 	if flop_stat.scan > 0:
 		scan_adjacent_nodes();
-	else:
+	elif node_type == netn_type.FIREWALL :
+		if flop_stat.breach <= 0:
+			emit_signal("firewall_attack")
 		acquired_by_player()
+	elif node_type == netn_type.ENEMY :
+		if flop_stat.attack <= 0:
+			emit_signal("enemy_attack")
+		acquired_by_player()
+	elif node_type == netn_type.DATA or node_type == netn_type.HOME or node_type == netn_type.ENERGY or node_type == netn_type.MISC:
+		acquired_by_player()
+	else:
+		assert("error unknow node type")
 	return true;
 
 	
 func can_receive_flop(flop_stat):
-	if flop_stat.move > 0 or flop_stat.attack > 0 or flop_stat.scan > 0:
+	if flop_stat.scan > 0:
+		return current_state != netn_state.NONE
+	if flop_stat.move > 0 or flop_stat.attack > 0:
 		return is_accessible_by_player() and current_state != netn_state.HERE
 	elif flop_stat.breach > 0:
 		return is_accessible_by_player() and current_state != netn_state.HERE \
 		and current_state != netn_state.PLAYER and node_type == netn_type.FIREWALL
-	elif flop_stat.move > 0:
-		return is_accessible_by_player() and current_state != netn_state.PLAYER
 	elif flop_stat.ram > 0:
 		return current_state == netn_state.HERE
 	else:

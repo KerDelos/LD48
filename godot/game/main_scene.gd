@@ -40,6 +40,12 @@ func new_home(home):
 
 func energy_bonus(amount):
 	deck().energy_bonus(amount)
+	
+func enemy_attack():
+	deck().enemy_attack()
+
+func firewall_attack():
+	deck().firewall_attack()
 
 func center_camera_on_node(netn):
 	$Camera2D.position = netn.position

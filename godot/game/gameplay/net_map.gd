@@ -20,7 +20,8 @@ func _ready():
 		c.connect("open_shop",get_parent(),"open_shop")
 		c.connect("new_home",get_parent(),"new_home")
 		c.connect("energy_bonus",get_parent(),"energy_bonus")
-		c.connect("bin", get_parent(), "bin")
+		c.connect("firewall_attack",get_parent(),"firewall_attack")
+		c.connect("enemy_attack",get_parent(), "enemy_attack")
 	p_start.acquired_by_player()
 
 func is_netn_hovered():
