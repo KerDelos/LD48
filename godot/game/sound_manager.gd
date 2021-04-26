@@ -22,7 +22,7 @@ func _ready():
 	self.add_child(music)
 	music.bus = "Music"
 	music.stream = load("res://audio/ost.wav")
-	#music.play()
+	music.play()
 	
 	# Create SFX Player
 	sfx = AudioStreamPlayer.new()
