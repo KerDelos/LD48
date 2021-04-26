@@ -120,6 +120,7 @@ func acquired_by_player():
 	refresh_sprite();
 	if current_state != netn_state.PLAYER:
 		on_acquired_by_player();
+		SoundManager.play_sfx(SoundManager.sfx_acquire)
 
 func scan_adjacent_nodes():
 	for netn in connected_nodes:
@@ -141,6 +142,7 @@ func _on_Area2D_mouse_entered():
 	is_hovered = true;
 	refresh_sprite()
 	emit_signal("netn_hovered",self)
+	SoundManager.play_sfx(SoundManager.sfx_hover)
 
 func _on_Area2D_mouse_exited():
 	is_hovered = false;

@@ -24,6 +24,10 @@ config/name="LD48_Godot"
 run/main_scene="res://game/ui/title_page.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+SoundManager="*res://game/sound_manager.gd"
+
 [physics]
 
 common/enable_pause_aware_picking=true

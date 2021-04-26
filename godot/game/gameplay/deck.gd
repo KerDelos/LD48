@@ -81,6 +81,7 @@ func draw():
 		flop.init(draw_pile.pop_back())
 		flop.connect("flop_selected",self,"on_floppy_selected")
 	spray_hand()
+	SoundManager.play_sfx(SoundManager.sfx_flop_draw)
 
 func discard(flop, was_consumed, was_binned = false):
 	hand.remove(hand.find(flop))
@@ -90,10 +91,13 @@ func discard(flop, was_consumed, was_binned = false):
 		deck.remove(deck.find(flop.stats))
 	if !was_consumed:
 		consume_energy(flop.stats.discard_cost);
+		SoundManager.play_sfx(SoundManager.sfx_flop_discard)
 	flop.queue_free()
 	spray_hand();
 
 func spray_hand():
+	if hand.empty():
+		return;
 	var i = 1
 	var card_interval = 1.0/float(hand.size())
 	for flop in hand:
@@ -116,11 +120,14 @@ func floppy_released(floppy):
 	floppy.unselect()
 	selected_flop = null
 	var netmap = netmap()
-	if netmap.is_netn_hovered() and can_play_flop(floppy.stats):
-		if netmap.can_apply_flop_on_hovered_netn(floppy.stats) :
-			netmap.apply_flop_on_hovered_netn(floppy.stats)
-			consume(floppy)
-			main_scene().check_for_end()
+	if netmap.is_netn_hovered() :
+		if can_play_flop(floppy.stats):
+			if netmap.can_apply_flop_on_hovered_netn(floppy.stats) :
+				netmap.apply_flop_on_hovered_netn(floppy.stats)
+				consume(floppy)
+				main_scene().check_for_end()
+		else:
+			SoundManager.play_sfx(SoundManager.sfx_cant)
 	elif discard_hovered:
 		discard(floppy,false)
 		main_scene().check_for_end()
@@ -159,6 +166,7 @@ func start_next_turn():
 func discard_hovered():
 	discard_hovered = true;
 	$Discard/SpriteHolder.scale = Vector2(1.1,1.1)
+	SoundManager.play_sfx(SoundManager.sfx_hover)
 	
 func discard_unhovered():
 	discard_hovered = false;

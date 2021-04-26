@@ -21,6 +21,7 @@ func init(flop_stats):
 func _on_Area2D_mouse_entered():
 	scale = Vector2(1.2,1.2);
 	emit_signal("flop_hovered", self)
+	SoundManager.play_sfx(SoundManager.sfx_hover)
 	
 
 func _on_Area2D_mouse_exited():
