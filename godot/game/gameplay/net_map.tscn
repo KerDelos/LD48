@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/gameplay/net_node.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/net_map.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://game/gameplay/floppys/flp_move.tres" type="Resource" id=4]
 [ext_resource path="res://game/gameplay/floppys/flp_ram.tres" type="Resource" id=5]
 [ext_resource path="res://resources/gameplay/enviro.png" type="Texture" id=6]
+[ext_resource path="res://game/gameplay/floppys/flp_scan.tres" type="Resource" id=7]
+[ext_resource path="res://game/gameplay/floppys/flp_breach.tres" type="Resource" id=8]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 131.66, 83.8491 )
@@ -83,17 +85,99 @@ node_type = 2
 
 [node name="net_node11" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1692.34, -307.849 )
-netn_name = "North Bridge"
+netn_name = "TRUE SECURity"
+out_nodes = [ NodePath("../net_node13"), NodePath("../net_node15") ]
 node_type = 1
 
 [node name="net_node12" parent="." instance=ExtResource( 1 )]
-position = Vector2( -187.66, -275.849 )
+position = Vector2( 396.34, -1267.85 )
 netn_name = "Final"
 is_final_node = true
 node_type = 1
 
+[node name="net_node13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1356.34, -475.849 )
+out_nodes = [ NodePath("../net_node14"), NodePath("../net_node16") ]
+node_type = 6
+
+[node name="net_node14" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1676.34, -635.849 )
+node_type = 2
+
+[node name="net_node15" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2012.34, -467.849 )
+out_nodes = [ NodePath("../net_node14") ]
+node_type = 3
+shop_content = [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 5 ) ]
+
+[node name="net_node16" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1356.34, -827.849 )
+out_nodes = [ NodePath("../net_node17") ]
+node_type = 2
+
+[node name="net_node17" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1004.34, -651.849 )
+out_nodes = [ NodePath("../net_node18"), NodePath("../net_node20") ]
+node_type = 1
+
+[node name="net_node18" parent="." instance=ExtResource( 1 )]
+position = Vector2( 684.34, -811.849 )
+out_nodes = [ NodePath("../net_node19") ]
+node_type = 4
+
+[node name="net_node19" parent="." instance=ExtResource( 1 )]
+position = Vector2( 988.34, -963.849 )
+out_nodes = [ NodePath("../net_node21") ]
+node_type = 2
+
+[node name="net_node20" parent="." instance=ExtResource( 1 )]
+position = Vector2( 684.34, -491.849 )
+out_nodes = [ NodePath("../net_node18"), NodePath("../net_node22") ]
+node_type = 3
+shop_content = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 8 ) ]
+
+[node name="net_node21" parent="." instance=ExtResource( 1 )]
+position = Vector2( 716.34, -1099.85 )
+node_type = 4
+
+[node name="net_node22" parent="." instance=ExtResource( 1 )]
+position = Vector2( 380.34, -643.849 )
+out_nodes = [ NodePath("../net_node24"), NodePath("../net_node25") ]
+node_type = 5
+
+[node name="net_node23" parent="." instance=ExtResource( 1 )]
+position = Vector2( 412.34, -947.849 )
+out_nodes = [ NodePath("../net_node28"), NodePath("../net_node21") ]
+node_type = 3
+shop_content = [ ExtResource( 3 ), ExtResource( 7 ), ExtResource( 3 ) ]
+
+[node name="net_node24" parent="." instance=ExtResource( 1 )]
+position = Vector2( 92.34, -787.849 )
+out_nodes = [ NodePath("../net_node27") ]
+node_type = 5
+
+[node name="net_node25" parent="." instance=ExtResource( 1 )]
+position = Vector2( 92.34, -499.849 )
+out_nodes = [ NodePath("../net_node26"), NodePath("../net_node24") ]
+node_type = 2
+
+[node name="net_node26" parent="." instance=ExtResource( 1 )]
+position = Vector2( -227.66, -659.849 )
+out_nodes = [ NodePath("../net_node28") ]
+node_type = 5
+
+[node name="net_node27" parent="." instance=ExtResource( 1 )]
+position = Vector2( 92.34, -1115.85 )
+out_nodes = [ NodePath("../net_node12") ]
+node_type = 6
+
+[node name="net_node28" parent="." instance=ExtResource( 1 )]
+position = Vector2( -227.66, -947.849 )
+out_nodes = [ NodePath("../net_node24") ]
+node_type = 4
+
 [node name="enviro" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.372549 )
+modulate = Color( 1, 1, 1, 0.223529 )
 position = Vector2( 820.34, 12.1509 )
 scale = Vector2( 3.2, 3.2 )
 texture = ExtResource( 6 )

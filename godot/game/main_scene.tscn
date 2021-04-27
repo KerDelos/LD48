@@ -31,23 +31,23 @@ deck = [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ) 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 630.888, 276.163 )
 current = true
-zoom = Vector2( 1.2, 1.2 )
+zoom = Vector2( 1.4, 1.4 )
 
 [node name="netmap" parent="." instance=ExtResource( 2 )]
 position = Vector2( 526.041, 79.7315 )
 
 [node name="UpDetect" type="VisibilityNotifier2D" parent="netmap"]
-position = Vector2( 792.581, -1081.05 )
-scale = Vector2( 16.6664, 13.1004 )
+position = Vector2( 900.183, -1987.17 )
+scale = Vector2( 178.069, 13.1004 )
 
 [node name="LeftDetect" type="VisibilityNotifier2D" parent="netmap"]
-position = Vector2( -618.31, 64.0325 )
-scale = Vector2( 3.77183, 3.89782 )
+position = Vector2( -965.655, -575.914 )
+scale = Vector2( 3.77183, 122.637 )
 
 [node name="DownDetect" type="VisibilityNotifier2D" parent="netmap"]
-position = Vector2( 651.724, 805.215 )
-scale = Vector2( 8.98196, 6.71809 )
+position = Vector2( 863.152, 948.684 )
+scale = Vector2( 161.89, 6.71809 )
 
 [node name="RightDetect" type="VisibilityNotifier2D" parent="netmap"]
-position = Vector2( 2418.45, 257.706 )
-scale = Vector2( 6.84762, 6.89564 )
+position = Vector2( 2886.61, -470.965 )
+scale = Vector2( 6.84762, 131.109 )
