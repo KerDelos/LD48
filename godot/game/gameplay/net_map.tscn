@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/gameplay/net_node.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/net_map.gd" type="Script" id=2]
 [ext_resource path="res://game/gameplay/floppys/flp_attack.tres" type="Resource" id=3]
 [ext_resource path="res://game/gameplay/floppys/flp_move.tres" type="Resource" id=4]
 [ext_resource path="res://game/gameplay/floppys/flp_ram.tres" type="Resource" id=5]
+[ext_resource path="res://resources/gameplay/enviro.png" type="Texture" id=6]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 131.66, 83.8491 )
@@ -90,3 +91,9 @@ position = Vector2( -187.66, -275.849 )
 netn_name = "Final"
 is_final_node = true
 node_type = 1
+
+[node name="enviro" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.372549 )
+position = Vector2( 820.34, 12.1509 )
+scale = Vector2( 3.2, 3.2 )
+texture = ExtResource( 6 )

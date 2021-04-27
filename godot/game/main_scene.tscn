@@ -37,16 +37,17 @@ zoom = Vector2( 1.2, 1.2 )
 position = Vector2( 526.041, 79.7315 )
 
 [node name="UpDetect" type="VisibilityNotifier2D" parent="netmap"]
-position = Vector2( 597.293, -330.134 )
-scale = Vector2( 2.17725, 5.54084 )
+position = Vector2( 792.581, -1081.05 )
+scale = Vector2( 16.6664, 13.1004 )
 
 [node name="LeftDetect" type="VisibilityNotifier2D" parent="netmap"]
-position = Vector2( -406.643, 216.483 )
+position = Vector2( -618.31, 64.0325 )
+scale = Vector2( 3.77183, 3.89782 )
 
 [node name="DownDetect" type="VisibilityNotifier2D" parent="netmap"]
-position = Vector2( 621.486, 966.485 )
-scale = Vector2( 3.18633, 6.71809 )
+position = Vector2( 651.724, 805.215 )
+scale = Vector2( 8.98196, 6.71809 )
 
 [node name="RightDetect" type="VisibilityNotifier2D" parent="netmap"]
-position = Vector2( 1586.9, 229.988 )
-scale = Vector2( 0.8, 1.1 )
+position = Vector2( 2418.45, 257.706 )
+scale = Vector2( 6.84762, 6.89564 )

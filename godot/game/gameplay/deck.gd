@@ -69,6 +69,7 @@ func new_home():
 	draw_pile.clear()
 	discard_pile.clear()
 	reset_energy()
+	energy = energy+1 #kind of a hack since the card will consume energy right after
 	shuffle_deck_into_draw_pile()
 	init_hand()
 	pass

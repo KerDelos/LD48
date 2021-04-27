@@ -9,7 +9,7 @@ var final_node = null
 func _ready():
 	var p_start = null
 	for c in get_children():
-		if c is VisibilityNotifier2D or c is TileMap:
+		if c is VisibilityNotifier2D or c is TileMap or c is Sprite:
 			continue
 		if c.is_final_node:
 			final_node = c

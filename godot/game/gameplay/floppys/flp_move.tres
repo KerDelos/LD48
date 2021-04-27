@@ -13,5 +13,5 @@ scan = 0
 move = 1
 ram = 0
 defense = 0
-cost = 0
+cost = 1
 discard_cost = 1
